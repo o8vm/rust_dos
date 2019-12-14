@@ -2,15 +2,11 @@
 #![no_std]
 #![no_main]
 
-use core::panic::PanicInfo;
-#[panic_handler]
-fn panic(_info: &PanicInfo) -> ! {
-    loop {}
-}
+use rust_dos::entry;
 
-#[link_section = ".startup"]
-#[no_mangle]
-fn _start() -> ! {
+entry!(main);
+
+fn main() -> ! {
     unsafe {
         asm!("mov $$0x2, %ah
               mov $$0x41,%dl
