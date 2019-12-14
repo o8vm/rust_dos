@@ -1,7 +1,8 @@
-# Rust DOS (Creating a 16bit DOS executable with Rust)
+# Rust DOS (Creating a DOS executable with Rust)
 
-It is possible to create a DOS executable with Rust.  
-Rust also empowers x86 real-mode programming. This is a quick demo of it.
+Rust also empowers x86 real-mode programming. 
+So, it is possible to create a DOS executable or 1st stage bootloader with Rust. 
+This is a quick demo of creating COM executable for DOS.
 
 ## Building
 You need a nightly Rust compiler and binutils. First you need to install the [cargo-xbuild](https://github.com/rust-osdev/cargo-xbuild) and [cargo-binutils](https://github.com/rust-embedded/cargo-binutils):
