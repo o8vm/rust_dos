@@ -26,7 +26,7 @@ cargo objcopy -- -I elf32-i386 -O binary --binary-architecture=i386:x86 \
 ```
 
 ## Running
-You can copy `rust_dos.com` to DOS image.  
+You can copy `rust_dos.com` to your DOS image.  
 
 examples on macOS:
 
@@ -43,7 +43,7 @@ Then, you can test it using QEMU:
 qemu-system-i386 freedos.img -boot c
 ```
 
-You can use the `println!` macro. 
+You can use the `println!` macro.  
 Below is an example of HelloWorld:
 
 ![sample](https://github.com/ellbrid/rust_dos/blob/images/rust_dos_hello.png)
