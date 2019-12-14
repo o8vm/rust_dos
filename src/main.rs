@@ -6,5 +6,5 @@ use rust_dos::*;
 entry!(main);
 
 fn main() {
-    // println!("Hello, world!");
+    println!("Hello, world!");
 }

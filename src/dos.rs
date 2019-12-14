@@ -1,5 +1,5 @@
 #[macro_use]
-// pub mod console;
+pub mod console;
 pub mod panic;
 
 pub fn exit(rt: u8) -> ! {
