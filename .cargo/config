@@ -1,0 +1,3 @@
+[build]
+target = "i586-rust_dos.json"
+rustflags = ["-C", "link-arg=-Tlink.x"]
