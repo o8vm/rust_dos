@@ -43,6 +43,7 @@ Then, you can test it using QEMU:
 qemu-system-i386 freedos.img -boot c
 ```
 
-This prototype simply displays A on the screen:
+You can use the `println!` macro. 
+Below is an example of HelloWorld:
 
-![sample](https://github.com/ellbrid/rust_dos/blob/images/rust_dos.png)
+![sample](https://github.com/ellbrid/rust_dos/blob/images/rust_dos_hello.png)
