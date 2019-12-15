@@ -1,7 +1,9 @@
 #![feature(asm)]
 #![no_std]
 
+#[macro_use]
 pub mod dos;
+pub mod dpkey;
 
 #[link_section=".startup"]
 #[no_mangle]

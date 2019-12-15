@@ -6,5 +6,6 @@ use rust_dos::*;
 entry!(main);
 
 fn main() {
-    println!("Hello, world!");
+    println!("Hit any Key, please.");
+    dpkey::keymap();
 }
