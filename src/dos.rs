@@ -2,7 +2,7 @@
 pub mod console;
 pub mod panic;
 pub mod io;
-// pub mod kbc;
+pub mod kbc;
 
 pub fn exit(rt: u8) -> ! {
     unsafe {
