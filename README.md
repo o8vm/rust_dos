@@ -48,3 +48,9 @@ You can use the `println!` macro.
 Below is an example of HelloWorld:
 
 ![sample](https://github.com/ellbrid/rust_dos/blob/images/rust_dos_hello.png)
+
+### Others
+dpkey module steals key input processing from DOS and converts scan code to ascii code.  
+about scan code: see [PS/2 Keyboard - OSDev Wiki](https://wiki.osdev.org/PS/2_Keyboard).
+
+![sample2](https://github.com/ellbrid/rust_dos/blob/images/dpkey.gif)
