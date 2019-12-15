@@ -3,6 +3,6 @@ use super::exit;
 
 #[panic_handler]
 fn panic(_info: &PanicInfo) -> ! {
-    println!("\r\nPanic!");
+    println!("{}", _info);
     exit(0);
 }
