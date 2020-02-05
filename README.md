@@ -1,7 +1,6 @@
 # Rust DOS (Creating a DOS executable with Rust)
 
-Rust also empowers x86 real-mode programming.  
-So, it is possible to create a DOS executable or 1st stage bootloader with Rust.  
+It is possible to create a DOS executable or 1st stage bootloader with Rust.  
 This is a quick demo of creating COM executable for DOS.
 
 ## Building
