@@ -6,11 +6,8 @@ pub mod kbc;
 
 pub fn exit(rt: u8) -> ! {
     unsafe {
-        asm!("mov $$0x4C, %ah
-              int $$0x21"
-              :
-              : "{al}"(rt)
-              : "eax");
+        asm!("mov ah, 0x4C",
+             "int 0x21", in("al") rt);
     }
     loop {}
 }

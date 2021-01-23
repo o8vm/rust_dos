@@ -10,4 +10,5 @@ SECTIONS {
   .data   : { *(.data) }   > dos
   .bss    : { *(.bss) }    > dos
   .stack  : { *(.stack) }  > dos
+  /DISCARD/ : { *(.eh_frame*) }
 }
