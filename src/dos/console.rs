@@ -36,10 +36,6 @@ impl Write for DosWriter {
 
 fn printc(ch: u8) {
     unsafe {
-        asm!("mov $$0x2, %ah
-              int $$0x21"
-              :
-              : "{dl}"(ch)
-              : "eax", "edx");
+        asm!("int 0x21", in("ah") 0x02_u8, in("dl") ch)
     }
 }

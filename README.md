@@ -4,10 +4,9 @@ It is possible to create a DOS executable or 1st stage bootloader with Rust.
 This is a quick demo of creating COM executable for DOS.
 
 ## Building
-You need a nightly Rust compiler and binutils. First you need to install the [cargo-xbuild](https://github.com/rust-osdev/cargo-xbuild) and [cargo-binutils](https://github.com/rust-embedded/cargo-binutils):
+You need a binutils and llvm-tools-preview.
 
 ```shell
-cargo install cargo-xbuild 
 cargo install cargo-binutils
 rustup component add llvm-tools-preview
 ```
@@ -15,26 +14,31 @@ rustup component add llvm-tools-preview
 Then you can build the project by running:
 
 ```shell
-cargo xbuild --release
+cargo build --release
 ```
 
 To create a COM executable for DOS, run:
 
 ```shell
-cargo objcopy -- -I elf32-i386 -O binary --binary-architecture=i386:x86 \
-  target/i586-rust_dos/release/rust_dos target/i586-rust_dos/release/rust_dos.com
+cargo objcopy --release -O binary --binary-architecture=i386:x86 rust_dos.com
 ```
 
 ## Running
-You can copy `rust_dos.com` to your DOS image.  
+You can copy `rust_dos.com` to your DOS image.
 
-examples on macOS:
+examples on Linux
 
 ```shell
-$ hdiutil attach path/to/freedos.img 
-/dev/disk2          	FDisk_partition_scheme         	
-/dev/disk2s1        	DOS_FAT_16                     	/Volumes/FREEDOS2016
-$ cp target/i586-rust_dos/release/rust_dos.com /Volumes/FREEDOS2016/
+$ sudo partx -av freedos.img
+partition: none, disk: freedos.img, lower: 0, upper: 0
+Trying to use '/dev/loop1' for the loop device
+/dev/loop1: partition table type 'dos' detected
+range recount: max partno=1, lower=0, upper=0
+/dev/loop1: partition #1 added
+$ sudo mount /dev/loop1p1 /mnt
+$ sudo cp rust_dos.com /mnt/
+$ sudo umount /mnt
+$ sudo partx -dv /dev/loop1
 ```
 
 Then, you can test it using QEMU:
@@ -43,13 +47,13 @@ Then, you can test it using QEMU:
 qemu-system-i386 freedos.img -boot c
 ```
 
-You can use the `println!` macro.  
+You can use the `println!` macro. 
 Below is an example of HelloWorld:
 
-![sample](https://github.com/ellbrid/rust_dos/blob/images/rust_dos_hello.png)
+![sample](https://github.com/o8vm/rust_dos/blob/images/rust_dos_hello.png)
 
 ### Others
 dpkey module steals key input processing from DOS and converts scan code to ascii code.  
 about scan code: see [PS/2 Keyboard - OSDev Wiki](https://wiki.osdev.org/PS/2_Keyboard).
 
-![sample2](https://github.com/ellbrid/rust_dos/blob/images/dpkey.gif)
+![sample2](https://github.com/o8vm/rust_dos/blob/images/dpkey.gif)
