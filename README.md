@@ -20,7 +20,7 @@ cargo build --release
 To create a COM executable for DOS, run:
 
 ```shell
-cargo objcopy --release -O binary --binary-architecture=i386:x86 rust_dos.com
+cargo objcopy --release -- -O binary --binary-architecture=i386:x86 rust_dos.com
 ```
 
 ## Running
