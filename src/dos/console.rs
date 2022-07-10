@@ -1,4 +1,5 @@
 use core::fmt::{self, Write};
+use core::arch::asm;
 
 #[macro_export]
 macro_rules! print {

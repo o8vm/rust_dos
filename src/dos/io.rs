@@ -1,3 +1,5 @@
+use core::arch::asm;
+
 pub fn inb(port: usize) -> u8 {
     let mut ret: u8;
     unsafe {
