@@ -1,8 +1,9 @@
 #[macro_use]
 pub mod console;
-pub mod panic;
+pub mod allocator;
 pub mod io;
 pub mod kbc;
+pub mod panic;
 use core::arch::asm;
 
 pub fn exit(rt: u8) -> ! {
