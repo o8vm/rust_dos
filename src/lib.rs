@@ -1,10 +1,12 @@
 #![no_std]
+#![feature(alloc_error_handler)]
 
 #[macro_use]
 pub mod dos;
 pub mod dpkey;
+extern crate rlibc;
 
-#[link_section=".startup"]
+#[link_section = ".startup"]
 #[no_mangle]
 fn _start() -> ! {
     extern "Rust" {
@@ -26,5 +28,5 @@ macro_rules! entry {
 
             f()
         }
-    }
+    };
 }
