@@ -3,6 +3,7 @@ pub mod console;
 pub mod panic;
 pub mod io;
 pub mod kbc;
+pub mod error_code;
 use core::arch::asm;
 
 pub fn exit(rt: u8) -> ! {
