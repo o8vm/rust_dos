@@ -10,9 +10,7 @@ pub fn inb(port: usize) -> u8 {
 
 pub fn inw(port: usize) -> u16 {
     let mut ret: u16;
-    unsafe {
-        asm!("in ax, dx", out("ax") ret, in("dx") port)
-    }
+    unsafe { asm!("in ax, dx", out("ax") ret, in("dx") port) }
     ret
 }
 
