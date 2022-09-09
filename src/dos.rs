@@ -4,6 +4,7 @@ pub mod allocator;
 pub mod io;
 pub mod kbc;
 pub mod file;
+pub mod error_code;
 pub mod panic;
 use core::arch::asm;
 
