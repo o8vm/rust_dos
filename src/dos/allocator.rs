@@ -1,6 +1,3 @@
-// Allocator for MS-DOS, using 21h 48h and 49h functions.
-// The allocator is a simple linear allocator. It is used to allocate memory for the DOS kernel.
-
 use core::alloc::{GlobalAlloc, Layout};
 use core::arch::asm;
 use core::cmp::min;

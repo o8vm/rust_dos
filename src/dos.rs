@@ -6,7 +6,9 @@ pub mod kbc;
 pub mod file;
 pub mod error_code;
 pub mod panic;
+pub mod math;
 use core::arch::asm;
+pub use alloc::string::String as String;
 
 pub fn exit(rt: u8) -> ! {
     unsafe {
