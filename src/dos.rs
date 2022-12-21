@@ -9,6 +9,7 @@ pub mod panic;
 pub mod math;
 use core::arch::asm;
 pub use alloc::string::String as String;
+pub use alloc::boxed::Box as Box;
 
 pub fn exit(rt: u8) -> ! {
     unsafe {
