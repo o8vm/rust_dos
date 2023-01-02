@@ -7,6 +7,7 @@ pub mod file;
 pub mod error_code;
 pub mod panic;
 pub mod math;
+pub mod cooperative_multitasking;
 use core::arch::asm;
 
 pub use alloc::string::String as String;
