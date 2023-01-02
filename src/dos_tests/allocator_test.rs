@@ -1,6 +1,7 @@
 use rust_dos::*;
 use dos::*;
 
+#[allow(dead_code)]
 pub(crate) fn allocator_test() {
     let mut box1 = Box::new(5);
     assert_eq!(*box1, 5);
