@@ -24,6 +24,9 @@ cargo objcopy --release -- -O binary --binary-architecture=i386:x86 rust_dos.com
 ```
 
 ## Running
+
+### QEMU
+
 You can copy `rust_dos.com` to your DOS image.
 
 examples on Linux
@@ -51,6 +54,36 @@ You can use the `println!` macro.
 Below is an example of HelloWorld:
 
 ![sample](https://github.com/o8vm/rust_dos/blob/images/rust_dos_hello.png)
+
+### DOSBox
+
+First install DOSBox. Some examples if you like using package managers:
+
+#### Debian / Ubuntu
+
+```
+sudo apt install dosbox
+```
+
+#### macOS (Homebrew)
+
+```
+brew install dosbox
+```
+
+#### Windows (Chocolatey)
+
+```
+choco install dosbox
+```
+
+Once installed, you can launch DOSBox and give it the path to your executable. For example, you can just give it the current working directory like the following:
+
+```
+dosbox .
+```
+
+And this will open DOSBox and have the "C:\" drive be the current working directory. It's usually good to do this from another console so you don't have to close DOSBox every time you want to compile your application again.
 
 ### Others
 dpkey module steals key input processing from DOS and converts scan code to ascii code.  
