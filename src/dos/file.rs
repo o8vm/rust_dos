@@ -1,3 +1,4 @@
+use bitflags::bitflags;
 use core::arch::asm;
 use core::cmp::min;
 use crate::dos::error_code::ErrorCode;
@@ -30,6 +31,19 @@ impl SeekFrom {
             SeekFrom::End(offset) => *offset,
             SeekFrom::Current(offset) => *offset,
         }
+    }
+}
+
+bitflags! {
+    pub struct FileAttributes: u16 {
+        const SHARABLE     = 1 << 7;
+        const RESERVED     = 1 << 6;
+        const ARCHIVE      = 1 << 5;
+        const DIRECTORY    = 1 << 4;
+        const VOLUME_LABEL = 1 << 3;
+        const SYSTEM       = 1 << 2;
+        const HIDDEN       = 1 << 1;
+        const READ_ONLY    = 1;
     }
 }
 
@@ -147,6 +161,36 @@ impl File {
             return Err(ErrorCode::from_u8(error_code_or_new_pos_low_from_start as u8).unwrap_or(ErrorCode::UnknownError));
         }
         Ok((new_pos_high_from_start as u32) << 16 | (error_code_or_new_pos_low_from_start as u32))
+    }
+
+    pub fn attributes(filename: &str) -> Result<FileAttributes, ErrorCode> {
+        let mut error_result: u8 = 0;
+        let mut error_code: u16 = 0;
+        let mut attributes: u16 = 0;
+
+        // DOS PATH length limit is 66 bytes.
+        let mut filename_array: [u8; 70] = [0; 70]; // To be sure of the segment
+        for i in 0..min(filename_array.len(), filename.len()) {
+            filename_array[i] = filename.as_bytes()[i];
+        }
+        let filename_ptr = filename_array.as_ptr();
+        unsafe {
+            asm!("mov al, 0x00",
+                "mov ah, 0x43",
+                "int 0x21",
+                "setc dl",
+                "movzx cx, dl",
+                in("dx") filename_ptr as u16,
+                lateout("dl") error_result,
+                lateout("ax") error_code,
+                lateout("cx") attributes);
+        }
+
+        if error_result != 0 {
+            return Err(ErrorCode::from_u8(error_code as u8).unwrap_or(ErrorCode::UnknownError));
+        }
+
+        Ok(FileAttributes::from_bits_truncate(attributes))
     }
 }
 
