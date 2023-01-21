@@ -27,9 +27,14 @@ pub(crate) fn file_attribute_test() {
 
 #[allow(dead_code)]
 pub(crate) fn directory_test() {
-    let path = "1a2b3c4d";
+    let path = "C:\\1A2B3C4D";
 
+    print!("Creating folder {path}... ");
     dos::file::Directory::make(path).unwrap();
+    println!("Done");
 
-    println!("Attributes 2: {:?}", dos::file::File::attributes(path));
+    print!("Deleting folder {path}... ");
+    dos::file::Directory::remove(path).unwrap();
+    println!("Done");
+
 }
