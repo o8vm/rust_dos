@@ -24,3 +24,12 @@ pub(crate) fn file_attribute_test() {
 
     println!("Long filename {:?}", dos::file::File::attributes("Really long name or something"));
 }
+
+#[allow(dead_code)]
+pub(crate) fn directory_test() {
+    let path = "1a2b3c4d";
+
+    dos::file::Directory::make(path).unwrap();
+
+    println!("Attributes 2: {:?}", dos::file::File::attributes(path));
+}
