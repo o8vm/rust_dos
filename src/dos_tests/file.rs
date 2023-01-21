@@ -13,3 +13,14 @@ pub(crate) fn file_read_test() {
         Err(_) => println!("Error closing file")
     }
 }
+
+#[allow(dead_code)]
+pub(crate) fn file_attribute_test() {
+    let attributes = dos::file::File::attributes("C:\\AUTOEXEC.BAT");
+    let attributes = attributes.unwrap_or(dos::file::File::attributes("README.md").unwrap());
+
+    // Attributes aren't supported in DOSBox so expect this to have no info
+    println!("Attributes: {:?}", attributes);
+
+    println!("Long filename {:?}", dos::file::File::attributes("Really long name or something"));
+}
