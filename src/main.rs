@@ -15,4 +15,6 @@ entry!(main);
 fn main() {
     allocator_test();
     file_read_test();
+
+    println!("Hello, World!");
 }
