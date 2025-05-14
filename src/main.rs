@@ -18,4 +18,5 @@ fn main() {
     file_read_test();
     datetime_test();
     cooperative_multitasking_test();
+    println!("Hello, World!");
 }
