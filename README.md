@@ -90,3 +90,11 @@ dpkey module steals key input processing from DOS and converts scan code to asci
 about scan code: see [PS/2 Keyboard - OSDev Wiki](https://wiki.osdev.org/PS/2_Keyboard).
 
 ![sample2](https://github.com/o8vm/rust_dos/blob/images/dpkey.gif)
+
+## Tests
+
+To run the tests suite, you can type on your DOS emulator:
+
+```shell
+rust_dos.com test
+```
